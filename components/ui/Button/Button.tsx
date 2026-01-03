@@ -23,13 +23,15 @@ export default function Button({
   disabled,
   ...props
 }: ButtonProps) {
+  const { onDrag, onDragStart, onDragEnd, ...buttonProps } = props as any;
+  
   return (
     <motion.button
       className={`${styles.button} ${styles[variant]} ${styles[size]} ${fullWidth ? styles.fullWidth : ''} ${className}`}
       whileHover={{ scale: disabled || loading ? 1 : 1.02 }}
       whileTap={{ scale: disabled || loading ? 1 : 0.98 }}
       disabled={disabled || loading}
-      {...props}
+      {...buttonProps}
     >
       {loading ? (
         <span className={styles.spinner}></span>
